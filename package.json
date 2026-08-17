@@ -1,0 +1,1 @@
+{"dependencies": {"express": "^4.18.2", "aws-sdk": "^2.1500.0", "bullmq": "^4.14.0"}}
