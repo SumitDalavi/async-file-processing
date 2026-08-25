@@ -28,4 +28,7 @@ const worker = new Worker('file-processing', async job => {
     console.log('Done!');
 }, { connection });
 
-app.listen(3000, () => console.log('Async file API on 3000'));
+if (require.main === module) {
+    app.listen(3000, () => console.log('Async file API on 3000'));
+}
+module.exports = { app, processQueue, worker };
