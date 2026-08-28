@@ -14,7 +14,7 @@ Worker->>DB: Process metadata
 ```
 
 ## Component Breakdown
-- **Core Technology**: Node.js, S3
+- **Core Technology**: Node.js, Local File System
 - **Design Paradigm**: Emphasizes high availability, fault tolerance, and security.
 
 ## Security & Scaling Considerations
