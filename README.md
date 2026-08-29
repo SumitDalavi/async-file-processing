@@ -1,3 +1,6 @@
+> **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
+
+
 # Async File Processing Pipeline 📁⚡
 
 > Event-driven architecture for processing large media files asynchronously via S3 presigned URLs and background workers.
@@ -10,7 +13,7 @@ Processing heavy files synchronously blocks HTTP threads. External message broke
 Uploads are intercepted, saved locally, and processed by an embedded background worker loop backed by SQLite. This provides robust durability and DLQ (Dead Letter Queue) support. Simple CRUD applications fail when subjected to high throughput, race conditions, or massive data sets.
 
 ## The Solution
-This project implements a production-grade microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
+This project implements a robust microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
 
 ```text
 ┌──────────────┐      ┌───────────────┐      ┌───────────────┐
@@ -69,7 +72,7 @@ curl -X POST http://localhost:8080/api/trigger -H "Content-Type: application/jso
 [GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
 
 ---
-*Built with a focus on production-grade patterns, not toy demos.*
+*Built with a focus on robust patterns, not toy demos.*
 
 
 ---
@@ -96,6 +99,7 @@ npm run test
 ## 4. Constraints & Threat Model (Audit Added)
 
 ### Known Limitations
+- **Storage & Queues**: Uses an in-memory queue and mocked S3 URLs for file processing.
 - **Single-Node Design:** This prototype uses embedded databases to simplify the infrastructure footprint for verification. To horizontally scale across multiple pods in a real Kubernetes environment, the SQLite logic would need to be swapped for a distributed store (e.g., PostgreSQL, Redis).
 - **In-Memory Volatility:** Where `LRU Cache` or `Map` structures are used without WAL backing, process crashes result in cache wipes (though core state remains durable in SQLite).
 
