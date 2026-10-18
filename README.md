@@ -3,6 +3,9 @@
 
 # Async File Processing Pipeline 📁⚡
 
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/async-file-processing?color=blue&logo=github)](https://github.com/SumitDalavi/async-file-processing/releases)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/async-file-processing/releases)
+
 > Event-driven architecture for processing large media files asynchronously via S3 presigned URLs and background workers.
 
 ## The Problem
@@ -115,3 +118,24 @@ To comply with strict portfolio audit requirements, we explicitly define the bou
 
 - **Fully Implemented:** The core state machine, API routes, database schemas, and integration tests are real and fully functional.
 - **Mocked / Demo Mode:** S3 dependencies replaced with a local disk-based BlobStore simulator.
+
+## Release & Verification
+
+The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
+
+Each release automatically:
+1. Executes test suite gates.
+2. Builds the container image.
+3. Performs vulnerability scanning via Trivy.
+4. Generates an SPDX SBOM (`sbom.spdx.json`) using Anchore Syft.
+5. Publishes a GitHub Release with attached SBOM.
+
+### Verifying the Release
+```bash
+# Verify release via GitHub CLI
+gh release view v0.1.0 --repo SumitDalavi/async-file-processing
+
+# Download and inspect SBOM
+gh release download v0.1.0 --repo SumitDalavi/async-file-processing --pattern "sbom.spdx.json"
+cat sbom.spdx.json | jq .
+```
