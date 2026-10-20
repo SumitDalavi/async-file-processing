@@ -1,14 +1,14 @@
 > **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
 
-
 # Async File Processing Pipeline 📁⚡
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/async-file-processing?color=blue&logo=github)](https://github.com/SumitDalavi/async-file-processing/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/async-file-processing/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/async-file-processing/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/async-file-processing?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/async-file-processing/releases)
 [![Release Workflow](https://github.com/SumitDalavi/async-file-processing/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/async-file-processing/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/async-file-processing/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/async-file-processing?color=blue&logo=github)](https://github.com/SumitDalavi/async-file-processing/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/async-file-processing/releases)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/async-file-processing/pkgs/container/async-file-processing)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/async-file-processing/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > Event-driven architecture for processing large media files asynchronously via S3 presigned URLs and background workers.
 
@@ -80,7 +80,6 @@ curl -X POST http://localhost:8080/api/trigger -H "Content-Type: application/jso
 
 ---
 *Built with a focus on robust patterns, not toy demos.*
-
 
 ---
 
