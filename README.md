@@ -11,14 +11,10 @@
 > Event-driven architecture for processing large media files asynchronously via S3 presigned URLs and background workers.
 
 ## The Problem
-## Problem Statement
-Processing heavy files synchronously blocks HTTP threads. External message brokers like Kafka add significant operational overhead.
+Processing large media files synchronously inside API request cycles blocks application worker threads, degrades API responsiveness, and triggers client HTTP timeouts.
 
 ## Architecture & Solution
-Uploads are intercepted, saved locally, and processed by an embedded background worker loop backed by SQLite. This provides robust durability and DLQ (Dead Letter Queue) support. Simple CRUD applications fail when subjected to high throughput, race conditions, or massive data sets.
-
-## The Solution
-This project implements a robust microservice architecture designed to handle these specific edge cases. By utilizing advanced paradigms like idempotency keys, advisory locks, or optimized caching layers, this service guarantees data integrity under load.
+This service adopts an event-driven asynchronous processing pipeline: uploads are received and acknowledged immediately, while CPU-intensive transformations run in isolated background workers with Dead Letter Queue (DLQ) support and retry policies.
 
 ```text
 ┌──────────────┐      ┌───────────────┐      ┌───────────────┐
